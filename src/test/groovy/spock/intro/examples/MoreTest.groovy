@@ -19,16 +19,26 @@ class MoreTest extends Specification {
 
 	def "mocking"() {
 		given:
-			def myclass = new MyClass()
 			def mockDependency = Mock(ADependency)
-			mockDependency.getValue() >> "Mocked"
-			myclass.dependency = mockDependency
+			def myclass = new MyClass(mockDependency)
+		when:
+			def result = myclass.getDependencyValue()
+		then:
+			1* mockDependency.getValue()
+	}
+
+	def "stubbing"() {
+		given:
+			def stubDependency = Stub(ADependency)
+			def myclass = new MyClass(stubDependency)
+			stubDependency.getValue() >> "Mocked"
 		when:
 			def result = myclass.getDependencyValue()
 		then:
 			result == "Mocked"
 	}
-//
+
+	//
 //	@Unroll
 //	@Ignore
 //   def "extensions with multiple values"() {

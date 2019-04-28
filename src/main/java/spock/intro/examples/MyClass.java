@@ -5,6 +5,10 @@ public class MyClass {
 		return Math.max(a, b);
 	}
 	
+	public MyClass(ADependency dep) 	{
+		this.dependency = dep;
+		
+	}
 	public String getDependencyValue() {
 		return dependency.getValue();
 	}
