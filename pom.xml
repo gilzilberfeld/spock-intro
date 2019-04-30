@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>examples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -14,9 +15,9 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>        
+		<java.version>1.8</java.version>
 		<spock.version>1.2-groovy-2.4</spock.version>
-        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+		<gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -41,26 +42,55 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Spock & Spring -->
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>${spock.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-core</artifactId>
+			<version>${spock.version}</version>
+			<scope>test</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-spring</artifactId>
-            <version>${spock.version}</version>
-            <scope>test</scope>
-        </dependency>
-         <dependency>
-        	<groupId>org.codehaus.groovy</groupId>
-        	<artifactId>groovy-all</artifactId>
-        	<version>2.4.10</version>
-    	</dependency>
-    	
-    	
+		<dependency>
+			<groupId>org.spockframework</groupId>
+			<artifactId>spock-spring</artifactId>
+			<version>${spock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy-all</artifactId>
+			<version>2.4.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.athaydes</groupId>
+			<artifactId>spock-reports</artifactId>
+			<version>1.6.2</version>
+			<scope>test</scope>
+			<!-- this avoids affecting your version of Groovy/Spock -->
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- // if you don't already have slf4j-api and an implementation of it 
+			in the classpath, add this! -->
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.26</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.26</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -70,32 +100,32 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>${gmavenplus-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compileTests</goal>
-                            <goal>addTestSources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-	          	<artifactId>maven-surefire-plugin</artifactId>
-	         	<version>2.22.1</version>
-	         	<configuration>
-		         	<includes>
-		         			<include>**/*Spec.groovy</include>
-							<include>**/*Specs.groovy</include>
-		         			<include>**/*Test.groovy</include>
-							<include>**/*Tests.groovy</include>
-		         			<include>**/*Test.java</include>
-		         			<include>**/*Tests.java</include>
+				<groupId>org.codehaus.gmavenplus</groupId>
+				<artifactId>gmavenplus-plugin</artifactId>
+				<version>${gmavenplus-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compileTests</goal>
+							<goal>addTestSources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<configuration>
+					<includes>
+						<include>**/*Spec.groovy</include>
+						<include>**/*Specs.groovy</include>
+						<include>**/*Test.groovy</include>
+						<include>**/*Tests.groovy</include>
+						<include>**/*Test.java</include>
+						<include>**/*Tests.java</include>
 					</includes>
-	         	</configuration>
-        	</plugin>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
