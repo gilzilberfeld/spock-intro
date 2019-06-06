@@ -25,10 +25,16 @@ public class Team {
 		avengers.add(avenger);
 	}
 
+	public void addMember(String name) {
+		avengers.add(new Avenger(name));
+	}
+
 	public void setBadGuy(BadGuy badGuy) {
 		this.badGuy = badGuy;
 	}
 	
-	
+	public boolean includes(String name) {
+		return this.avengers.contains(new Avenger(name));
+	}
 
 }
