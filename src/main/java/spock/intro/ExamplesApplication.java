@@ -1,4 +1,4 @@
-package spock.intro.features;
+package spock.intro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -19,7 +19,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import spock.intro.AvengersConfiguration;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = AvengersConfiguration.class)
 @AutoConfigureMockMvc()
