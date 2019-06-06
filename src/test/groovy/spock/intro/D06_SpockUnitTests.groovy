@@ -1,7 +1,7 @@
 package spock.intro
 import spock.lang.Specification
 
-class D06_SpockTests extends Specification {
+class D06_SpockUnitTests extends Specification {
 
 	// Use string names for display
 	def "Simple Comparison"() {
@@ -10,7 +10,7 @@ class D06_SpockTests extends Specification {
 			'Tony' != 'Cap'
 	}
 	
-	def "given-when-then example"() {
+	def "Cap and Tony beat Thanos in UT"() {
     	given:
 			def avengers = new Team()
 			def avenger1 = new Avenger('Tony')
