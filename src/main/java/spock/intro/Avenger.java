@@ -20,5 +20,12 @@ public class Avenger {
 		Avenger otherAvenger = (Avenger) other;
 		return this.name == otherAvenger.name;
 	}
+	
+	public boolean canHandleItem(Hammer hammer) {
+		boolean canLift = hammer.canLift();
+		if (canLift)
+			hammer.lift();
+		return canLift;
+	}
 
 }

@@ -1,9 +1,10 @@
 package spock.intro
 import spock.lang.Specification
+import spock.lang.Unroll
 
-class D07_MoreSpock extends Specification {
+@Unroll
+class D07_ParameterizedTest extends Specification {
 
-	// Parameterized test
     def "is #name part of the Avengers? #result"() {
     	given:
 			def avengers = new Team()
@@ -14,10 +15,10 @@ class D07_MoreSpock extends Specification {
 			avengers.includes(name) == result	
 
         where:
-        name  | result
-        'Tony'  | true   
-        'Cap'	| true
-		'Thanos'| false
+	        name  	| result
+	        'Tony'  | true   
+	        'Cap'	| true
+			'Thanos'| false
     }
 	
 	
