@@ -1,10 +1,11 @@
-package spock.intro.examples
+package spock.intro.features
+
 
 import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Title
-import spock.lang.Unroll
 
+@Ignore
 @Title("Testing file extension validation method")
 class MoreTest extends Specification {
    

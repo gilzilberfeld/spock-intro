@@ -73,16 +73,18 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<!-- // if you don't already have slf4j-api and an implementation of it 
 			in the classpath, add this! -->
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!-- 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.26</version>
 		</dependency>
+-->		
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+<!--
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
@@ -90,7 +92,7 @@
 			<scope>test</scope>
 		</dependency>
 
-
+-->
 	</dependencies>
 
 	<build>

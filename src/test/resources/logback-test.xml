@@ -3,8 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <logger name="spock.intro.examples" level="error" />
     <logger name="o.s.jdbc.datasource.init.ScriptUtils" level="error" />
-    <logger name="com.zaxxer.hikari" level="error" />
-    <logger name="org.springframework.core " level="error" />
+    <logger name="c.a.s.report" level="error" />
     <logger name="org.springframework.beans" level="error" />
     <logger name="org.springframework.context" level="error" />
     <logger name="org.springframework.transaction" level="error" />

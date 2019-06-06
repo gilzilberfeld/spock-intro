@@ -1,4 +1,4 @@
-package spock.intro.examples;
+package spock.intro.features;
 
 spockReports {
 	set 'com.athaydes.spockframework.report.showCodeBlocks': true

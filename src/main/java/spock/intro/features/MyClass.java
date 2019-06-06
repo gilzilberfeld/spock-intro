@@ -1,4 +1,4 @@
-package spock.intro.examples;
+package spock.intro.features;
 
 public class MyClass {
 	public static int max(int a, int b) {

@@ -1,17 +1,17 @@
-package spock.intro.examples
-
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+package spock.intro.features
 
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import spock.lang.Ignore
 import spock.lang.Narrative
 import spock.lang.Specification
 import spock.lang.Title
-import org.springframework.test.web.servlet.MockMvc
 
-
+@Ignore
 @Title("Spring Specification")
 @Narrative("Controller testing")
 @AutoConfigureMockMvc()
