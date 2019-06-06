@@ -10,23 +10,6 @@ class D06_SpockTests extends Specification {
 			'Tony' != 'Cap'
 	}
 	
-	// Parameterized test
-    def "is #name part of the Avengers? #result"() {
-    	given:
-			def avengers = new Team()
-			avengers.addMember('Tony')
-			avengers.addMember('Cap')
-			
-		expect:
-			avengers.includes(name) == result	
-
-        where:
-        name  | result
-        'Tony'  | true   
-        'Cap'	| true
-		'Thanos'| false
-    }
-	
 	def "given-when-then example"() {
     	given:
 			def avengers = new Team()
