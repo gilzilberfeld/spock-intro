@@ -1,13 +1,11 @@
-package spock.intro;
+package spock.intro.cucumber;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -16,68 +14,33 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import spock.intro.AvengersConfiguration;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ContextConfiguration(classes = AvengersConfiguration.class)
 @AutoConfigureMockMvc()
-public class AvengerTests {
-	
+public class D03_StepDefinitions {
+
 	@Autowired
 	private MockMvc mockMvc;
-	
-	@Test
-	public void CaptainAmericaAndIronMan_SaveTheWorld() {
+
+	@Given("The {string} can be assembled")
+	public void the_Avengers_can_be_assembled(String teamName) {
 		try {
-			mockMvc.perform(
-					post("/mcu/team/create")
-					.param("name", "Avengers"))
+			mockMvc.perform(post("/mcu/team/create")
+					.param("name", teamName))
 					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/avenger/add")
-					.param("name", "Captain America"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/avenger/add")
-					.param("name", "Iron Man"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/badguy/arrive")
-					.param("name", "Thanos"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/team/fight"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					get("/mcu/result"))
-					.andExpect(status().isOk())
-					.andExpect(
-					content().string("Yeah, after five years"));
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
 	}
 
-	@Test
-	public void WeCanWriteItLikeThis_ButWeDont() {
-		createTeam("Avengers");
-		addAvenger("Captain America");
-		addAvenger("Iron Man");
-		badGuyArrives("Thanos");
-
-		fight();
-
-		assertTrue(avengersSavedTheWorld());
-	}
-
-	private void createTeam(String teamName) {
-		try {
-			mockMvc.perform(post("/mcu/team/create").param("name", teamName)).andExpect(status().isOk());
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
-	}
-
-	private void addAvenger(String name) {
+	@Given("{string} joins")
+	public void joiningTeam(String name) {
 		try {
 			mockMvc.perform(post("/mcu/avenger/add").param("name", name)).andExpect(status().isOk());
 		} catch (Exception e) {
@@ -85,30 +48,27 @@ public class AvengerTests {
 		}
 	}
 
-	private void badGuyArrives(String name) {
+	@When("They fight {string}")
+	public void theyFight(String name) {
 		try {
 			mockMvc.perform(post("/mcu/badguy/arrive").param("name", name)).andExpect(status().isOk());
-		} catch (Exception e) {
-			fail(e.getMessage());
-		}
-	}
-
-	private void fight() {
-		try {
 			mockMvc.perform(post("/mcu/team/fight")).andExpect(status().isOk());
+
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
 	}
 
-	private boolean avengersSavedTheWorld() {
+	@Then("It takes five years to beat him but they do")
+	public void theyBeatHimAfterFiveYears() {
 		try {
 			mockMvc.perform(get("/mcu/result")).andExpect(status().isOk())
 					.andExpect(content().string("Yeah, after five years"));
-			return true;
 		} catch (Exception e) {
-			return false;
+			fail();
 		}
 	}
 
+
 }
+

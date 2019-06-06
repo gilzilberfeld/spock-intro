@@ -20,39 +20,62 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @ContextConfiguration(classes = AvengersConfiguration.class)
 @AutoConfigureMockMvc()
-public class AvengerTests2 {
-
+public class D01_AvengerTests {
+	
 	@Autowired
 	private MockMvc mockMvc;
-
+	
 	@Test
 	public void CaptainAmericaAndIronMan_SaveTheWorld() {
+		createTeam("Avengers");
+		addAvenger("Captain America");
+		addAvenger("Iron Man");
+		badGuyArrives("Thanos");
+
+		fight();
+
+		assertTrue(avengersSavedTheWorld());
+	}
+
+	private void createTeam(String teamName) {
 		try {
-			mockMvc.perform(
-					post("/mcu/team/create")
-					.param("name", "Avengers"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/avenger/add")
-					.param("name", "Captain America"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/avenger/add")
-					.param("name", "Iron Man"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/badguy/arrive")
-					.param("name", "Thanos"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					post("/mcu/team/fight"))
-					.andExpect(status().isOk());
-			mockMvc.perform(
-					get("/mcu/result"))
-					.andExpect(status().isOk())
-					.andExpect(content().string("Yeah, after five years"));
+			mockMvc.perform(post("/mcu/team/create").param("name", teamName)).andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
+		}
+	}
+
+	private void addAvenger(String name) {
+		try {
+			mockMvc.perform(post("/mcu/avenger/add").param("name", name)).andExpect(status().isOk());
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+
+	private void badGuyArrives(String name) {
+		try {
+			mockMvc.perform(post("/mcu/badguy/arrive").param("name", name)).andExpect(status().isOk());
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+
+	private void fight() {
+		try {
+			mockMvc.perform(post("/mcu/team/fight")).andExpect(status().isOk());
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
+
+	private boolean avengersSavedTheWorld() {
+		try {
+			mockMvc.perform(get("/mcu/result")).andExpect(status().isOk())
+					.andExpect(content().string("Yeah, after five years"));
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
 	}
 
