@@ -25,7 +25,8 @@ class D05_GroovyFeatures {
 		assert cap.name == 'Steve Rogers'
 		
 		// Easy parsing
-		def appearances = jsonSlurper.parseText('{ "movies": [1,2,3,4] }') 
+		def appearances = 
+				jsonSlurper.parseText('{ "movies": [1,2,3,4] }') 
 		assert appearances.movies instanceof List 
 		assert appearances.movies == [1,2,3,4]
 	}

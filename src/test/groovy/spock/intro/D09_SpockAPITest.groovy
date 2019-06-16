@@ -19,7 +19,7 @@ import spock.lang.Title
 @AutoConfigureMockMvc()
 @ContextConfiguration(classes = AvengersConfiguration.class)
 @WebMvcTest()
-class D10_SpockAPITest extends Specification {
+class D09_SpockAPITest extends Specification {
 
 	@Autowired
 	private MockMvc mockMvc

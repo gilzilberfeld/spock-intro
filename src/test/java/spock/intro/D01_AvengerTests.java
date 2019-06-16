@@ -39,7 +39,9 @@ public class D01_AvengerTests {
 
 	private void createTeam(String teamName) {
 		try {
-			mockMvc.perform(post("/mcu/team/create").param("name", teamName)).andExpect(status().isOk());
+			mockMvc.perform(post("/mcu/team/create")
+					.param("name", teamName))
+					.andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -47,7 +49,10 @@ public class D01_AvengerTests {
 
 	private void addAvenger(String name) {
 		try {
-			mockMvc.perform(post("/mcu/avenger/add").param("name", name)).andExpect(status().isOk());
+			mockMvc.perform(
+					post("/mcu/avenger/add")
+					.param("name", name))
+					.andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -55,7 +60,10 @@ public class D01_AvengerTests {
 
 	private void badGuyArrives(String name) {
 		try {
-			mockMvc.perform(post("/mcu/badguy/arrive").param("name", name)).andExpect(status().isOk());
+			mockMvc.perform(
+					post("/mcu/badguy/arrive")
+					.param("name", name))
+					.andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -63,7 +71,9 @@ public class D01_AvengerTests {
 
 	private void fight() {
 		try {
-			mockMvc.perform(post("/mcu/team/fight")).andExpect(status().isOk());
+			mockMvc.perform(
+					post("/mcu/team/fight")).
+					andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -71,8 +81,9 @@ public class D01_AvengerTests {
 
 	private boolean avengersSavedTheWorld() {
 		try {
-			mockMvc.perform(get("/mcu/result")).andExpect(status().isOk())
-					.andExpect(content().string("Yeah, after five years"));
+			mockMvc.perform(get("/mcu/result"))
+				.andExpect(status().isOk())
+				.andExpect(content().string("Yeah, after five years"));
 			return true;
 		} catch (Exception e) {
 			return false;

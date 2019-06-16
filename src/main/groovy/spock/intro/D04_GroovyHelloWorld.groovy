@@ -12,8 +12,10 @@ class D04_GroovyHelloWorld {
 	
 	// type inference
 	def aSimpleMethod() {
+
 	// This will be very useful soon
-	aLabel:
+	aLabel:	
+
 		def aVariable = 3;
 		return aVariable;
 	}

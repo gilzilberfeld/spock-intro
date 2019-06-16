@@ -41,7 +41,9 @@ public class D03_StepDefinitions {
 	@Given("{string} joins")
 	public void joiningTeam(String name) {
 		try {
-			mockMvc.perform(post("/mcu/avenger/add").param("name", name)).andExpect(status().isOk());
+			mockMvc.perform(post("/mcu/avenger/add")
+					.param("name", name)).
+					andExpect(status().isOk());
 		} catch (Exception e) {
 			fail(e.getMessage());
 		}
@@ -61,8 +63,10 @@ public class D03_StepDefinitions {
 	@Then("It takes five years to beat him but they do")
 	public void theyBeatHimAfterFiveYears() {
 		try {
-			mockMvc.perform(get("/mcu/result")).andExpect(status().isOk())
-					.andExpect(content().string("Yeah, after five years"));
+			mockMvc.perform(get("/mcu/result"))
+					.andExpect(status().isOk())
+					.andExpect(content().
+							string("Yeah, after five years"));
 		} catch (Exception e) {
 			fail();
 		}

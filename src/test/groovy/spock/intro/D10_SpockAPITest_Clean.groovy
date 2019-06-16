@@ -19,22 +19,22 @@ import spock.lang.Title
 @AutoConfigureMockMvc()
 @ContextConfiguration(classes = AvengersConfiguration.class)
 @WebMvcTest()
-class D09_SpockAPITest_Clean extends Specification {
+class D10_SpockAPITest_Clean extends Specification {
 
 	@Autowired
 	private MockMvc mockMvc
 
 	def "Cap and Iron Man Beat Thanos"() {
-		given:
+		given: "Both sides are ready"
 			createTeam('Avengers')
 			addAvenger('Captain America')
 			addAvenger('Iron Man')
 			badGuyArrives('Thanos')
 			
-		when:
+		when: "FIGHT!!!1!!"
 			fight()
-
-		then:
+	
+		then: "5 Years later..."
 			avengersSavedTheWorld()
 	}
 	

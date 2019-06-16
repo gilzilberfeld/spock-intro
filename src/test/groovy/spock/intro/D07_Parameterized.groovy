@@ -5,7 +5,7 @@ import spock.lang.Unroll
 @Unroll
 class D07_ParameterizedTest extends Specification {
 
-    def "is #name part of the Avengers? #result"() {
+    def "Is #name part of the Avengers? #result"() {
     	given:
 			def avengers = new Team()
 			avengers.addMember('Tony')
@@ -20,7 +20,5 @@ class D07_ParameterizedTest extends Specification {
 	        'Cap'	| true
 			'Thanos'| false
     }
-	
-	
 	
 }
