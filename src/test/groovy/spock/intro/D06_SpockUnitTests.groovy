@@ -7,7 +7,7 @@ class D06_SpockUnitTests extends Specification {
 	def "Simple Comparison"() {
 		// Assertion replacement
 		expect:
-			'Tony' != 'Cap'
+			'Tony' == 'Cap'
 	}
 	
 	def "Cap and Tony beat Thanos in UT"() {
