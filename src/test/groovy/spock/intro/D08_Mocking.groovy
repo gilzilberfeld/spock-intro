@@ -17,7 +17,7 @@ class D08_Mocking extends Specification {
 		when:
 			def cap = new Avenger("Cap")
 		then:
-			assert cap.canHandleItem(mockHammer);
+			assert cap.canLift(mockHammer);
 	}
 	
 	def "Tony can't use Thor's hammer"() {
@@ -26,7 +26,7 @@ class D08_Mocking extends Specification {
 		when:
 			def tony = new Avenger("Iron Man")
 		then:
-			!tony.canHandleItem(mockHammer)
+			!tony.canLift(mockHammer)
 			0 * mockHammer.lift() 
 	}
 	

@@ -4,9 +4,9 @@ package spock.intro
 class D04_GroovyHelloWorld {
 	
 	static main(String[] args) {
-		// Implicit imports
 		// No parenthesis!
 		// No semicolons!
+		// Implicit imports
 		println "Hello World"
 	}
 	
